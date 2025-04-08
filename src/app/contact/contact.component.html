@@ -1,0 +1,55 @@
+<body>
+  <h2 class="contact-title">Contact us</h2>
+<div class="contact-container">
+  <!-- Infos de contact -->
+  <div class="contact-info">
+    <h4>
+      Pour toute question ou information, vous pouvez remplir le formulaire ci-dessous, nous appeler ou nous rendre visite à notre adresse.
+      Nous sommes toujours disponibles pour vous aider.
+    </h4> <br> <br>
+    <p>Email : <strong>Malambuglodie38@gmail.com</strong></p>
+    <p>Numéro : <strong>0815805592</strong></p>
+    <p>Adresse : <strong>Avenue Huillerie, en face du stade</strong></p>
+
+    <!-- Carte Google Map -->
+    <div id="map" class="map"></div>
+  </div>
+
+  <!-- Formulaire de contact -->
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+    <label for="fullName">Nom complet</label>
+    <input id="fullName" formControlName="fullName" placeholder="Glodie MALAMBU" title="Votre nom complet" />
+    <div *ngIf="contactForm.get('fullName')?.invalid && contactForm.get('fullName')?.touched" class="error-message">
+      Le nom est obligatoire.
+    </div>
+
+    <label for="email">Email</label>
+    <input id="email" type="email" formControlName="email" placeholder="malambuglodie38@gmail.com" title="Votre adresse email" />
+    <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched" class="error-message">
+      Entrez une adresse email valide.
+    </div>
+
+    <label for="phoneNumber">Numéro de téléphone</label>
+    <input id="phoneNumber" formControlName="phoneNumber" placeholder="0815805592" title="Votre numéro de téléphone" />
+    <div *ngIf="contactForm.get('phoneNumber')?.invalid && contactForm.get('phoneNumber')?.touched" class="error-message">
+      Entrez un numéro de téléphone valide.
+    </div>
+
+    <label for="message">Message</label>
+    <textarea id="message" formControlName="message" placeholder="Entrez votre message" title="Votre message"></textarea>
+    <div *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched" class="error-message">
+      Le message est obligatoire.
+    </div>
+
+    <button type="submit" [disabled]="contactForm.invalid" [ngStyle]="{ 'backgroundColor': buttonColor }">
+      Envoyer
+    </button>
+  </form>
+</div>
+
+<!-- Pied de page -->
+<footer class="footer">
+  <p>&copy; 2025 Hackular. Tous droits réservés.</p>
+</footer>
+
+</body>
